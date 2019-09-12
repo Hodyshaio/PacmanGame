@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script src="JavaScript.js"></script>
+    <title></title>
+</head>
+<body>
+    <canvas height="600" width="800" style="border:solid 2px #000000;background-color:darkblue"></canvas>
+    <script>
+        let pm = new Game()
+        setInterval(() => pm.open = !pm.open, 200) //טיימר לפתיחת וסגירת הפה
+        //תפוס אירוע של הקשה על מקלדת בכל החלון ותבדוק אם הקוד האסקי הוא של כיוון
+        window.addEventListener('keydown', () =>
+        {
+            if (event.keyCode > 36 && event.keyCode <= 40)
+                pm.Side = event.keyCode//מכניס לsize את הערך של המקש שנלחץ
+        })
+        gameLoop()
+        function gameLoop()
+        {
+            requestAnimationFrame(gameLoop)
+            pm.move()
+        }
+    </script>
+</body>
+</html>
